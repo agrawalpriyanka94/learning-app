@@ -1,1 +1,22 @@
-[object Object],[object Object],[object Object],[object Object],[object Object]
+[
+  {
+    "id": 1,
+    "name": "priya"
+  },
+  {
+    "id": 2,
+    "name": "ashu"
+  },
+  {
+    "id": 3,
+    "name": "admin"
+  },
+  {
+    "id": 4,
+    "name": "pagl"
+  },
+  {
+    "id": 5,
+    "name": "Bhoot"
+  }
+]
