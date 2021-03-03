@@ -1,6 +1,6 @@
 const express = require('express');
 const fs = require('fs');
-
+const {writeDatabase} = require('./filesSystem');
 const data = fs.readFileSync('./database/object.json', 'UTF-8');
 const database = JSON.parse(data);
 console.log(JSON.stringify(database, null, 2));
@@ -9,12 +9,18 @@ const app = express();
 app.use(express.json());
 
 app.post('/api/v1/users', (req, res) => {
-    console.log(req.body)
+
+    const newUser = req.body;
+    console.log(newUser);
+
+    database.push(newUser);
+    console.log(database);
+
+    writeDatabase(database).then(result => console.log(result)).catch(error => {
+        console.log(error)});
+
     res.status(201) // 201: Created, 200: OK/Success, 404: Not Found, 500: Internal Server error, 400: Bad request
-        .send({
-            status: 'Success',
-            message: 'Data added'
-        });
+        .json(database);
 });
 
 app.get('/api/v1/users/:id', (req, res) => {
